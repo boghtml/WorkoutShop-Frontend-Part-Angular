@@ -1,0 +1,143 @@
+<div class="container-fluid mt-4">
+    <div class="row">
+      <!-- Sidebar for filters -->
+      <div class="col-md-3">
+        <div class="card shadow-sm mb-4">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Фільтри</h5>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="applyFilters()">
+              <div class="mb-3">
+                <label for="category" class="form-label">Категорія</label>
+                <select
+                  id="category"
+                  class="form-select"
+                  [(ngModel)]="selectedCategory"
+                  name="category"
+                >
+                  <option value="">Всі категорії</option>
+                  <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="sortOrder" class="form-label">Сортувати за</label>
+                <select
+                  id="sortOrder"
+                  class="form-select"
+                  [(ngModel)]="sortOrder"
+                  name="sortOrder"
+                >
+                  <option value="">Не сортувати</option>
+                  <option value="price_asc">Ціна: від меншої до більшої</option>
+                  <option value="price_desc">Ціна: від більшої до меншої</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Ціновий діапазон</label>
+                <div class="row">
+                  <div class="col">
+                    <input
+                      type="number"
+                      [(ngModel)]="minPrice"
+                      name="minPrice"
+                      class="form-control"
+                      placeholder="Мін"
+                    />
+                  </div>
+                  <div class="col">
+                    <input
+                      type="number"
+                      [(ngModel)]="maxPrice"
+                      name="maxPrice"
+                      class="form-control"
+                      placeholder="Макс"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="searchTerm" class="form-label">Пошук</label>
+                <input
+                  type="text"
+                  id="searchTerm"
+                  class="form-control"
+                  [(ngModel)]="searchTerm"
+                  name="searchTerm"
+                  placeholder="Пошук продуктів..."
+                />
+              </div>
+              <button type="submit" class="btn btn-primary w-100 mb-2">
+                Застосувати фільтри
+              </button>
+              <button type="button" class="btn btn-secondary w-100" (click)="resetFilters()">
+                Скинути фільтри
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Main content area -->
+      <div class="col-md-9">
+        <h1 class="mb-4">Товари для тренувань</h1>
+  
+        <div *ngIf="products && products.length > 0; else noProducts">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" *ngFor="let product of products">
+              <div class="card h-100 shadow-sm product-card">
+                <div class="position-relative">
+                  <a [routerLink]="['/products', product.productId]">
+                    <img
+                      [src]="product.productImages[0]?.imageUrl || 'assets/no-image.png'"
+                      class="card-img-top"
+                      [alt]="product.name"
+                      style="height: 200px; object-fit: cover;"
+                    />
+                  </a>
+                  <span
+                    *ngIf="product.stockQuantity <= 5 && product.stockQuantity > 0"
+                    class="badge bg-warning position-absolute top-0 end-0 m-2"
+                    >Обмежений запас</span
+                  >
+                  <span
+                    *ngIf="product.stockQuantity == 0"
+                    class="badge bg-danger position-absolute top-0 end-0 m-2"
+                    >Немає в наявності</span
+                  >
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">{{ product.name }}</h5>
+                  <p class="card-text flex-grow-1">
+                    {{
+                      product.description
+                        ? (product.description | slice: 0:100) + '...'
+                        : 'Опис відсутній.'
+                    }}
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto">
+                    <span class="h5 mb-0 text-primary">{{ product.price | currency }}</span>
+                    <button
+                      class="btn btn-sm btn-outline-primary"
+                      (click)="addToCart(product.productId)"
+                      [disabled]="product.stockQuantity == 0"
+                    >
+                      <i class="fas fa-cart-plus"></i> Додати до кошика
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <ng-template #noProducts>
+          <div class="alert alert-info text-center" role="alert">
+            <h4 class="alert-heading">Немає доступних продуктів</h4>
+            <p>Ми працюємо над поповненням асортименту. Будь ласка, завітайте пізніше!</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  

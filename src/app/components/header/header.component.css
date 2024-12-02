@@ -1,0 +1,86 @@
+
+.navbar {
+    padding: 0.8rem 0;
+    transition: all 0.3s ease;
+  }
+  
+  .logo {
+    height: 40px;
+    width: auto;
+    transition: all 0.3s ease;
+  }
+  
+  .brand-text {
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #333;
+  }
+  
+  .nav-link {
+    color: #333 !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .nav-link:hover {
+    color: #007bff !important;
+  }
+  
+  .nav-link.active {
+    color: #007bff !important;
+  }
+  
+  .search-container {
+    max-width: 300px;
+    width: 100%;
+  }
+  
+  .search-input {
+    padding-right: 40px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+  }
+  
+  .search-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    color: #666;
+  }
+  
+  .cart-icon {
+    font-size: 1.2rem;
+  }
+  
+  .cart-icon .badge {
+    font-size: 0.7rem;
+    padding: 0.25em 0.4em;
+    top: -5px;
+    right: -5px;
+  }
+  
+  .nav-spacer {
+    height: 73px; /* Висота навбару + padding */
+  }
+  
+  .dropdown-item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .dropdown-item i {
+    width: 20px;
+  }
+  
+  @media (max-width: 991.98px) {
+    .search-container {
+      max-width: 100%;
+      margin: 1rem 0;
+    }
+    
+    .navbar-nav {
+      margin-top: 1rem;
+    }
+  }

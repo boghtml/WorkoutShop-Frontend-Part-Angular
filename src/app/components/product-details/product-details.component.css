@@ -1,0 +1,99 @@
+.carousel-item img {
+    object-fit: contain;
+    height: 500px;
+    width: 100%;
+  }
+  
+  .img-thumbnail {
+    object-fit: cover;
+    height: 80px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .img-thumbnail:hover {
+    transform: scale(1.05);
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5%;
+    background: rgba(0,0,0,0.2);
+  }
+  
+  .carousel-control-prev:hover,
+  .carousel-control-next:hover {
+    background: rgba(0,0,0,0.4);
+  }
+  
+  .badge {
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
+  
+  .input-group .form-control {
+    text-align: center;
+  }
+  
+  .btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .list-unstyled li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .text-success {
+    color: #28a745;
+  }
+  
+  .product-features i {
+    width: 20px;
+    text-align: center;
+  }
+  
+  .shipping-info i {
+    width: 20px;
+    text-align: center;
+    color: #007bff;
+  }
+  
+  .breadcrumb {
+    background-color: transparent;
+    padding: 0.75rem 0;
+  }
+  
+  .breadcrumb-item a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .breadcrumb-item a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Animation for Add to Cart button */
+  @keyframes addedToCart {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  .added-to-cart {
+    animation: addedToCart 0.3s ease-in-out;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .carousel-item img {
+      height: 300px;
+    }
+    
+    .img-thumbnail {
+      height: 60px;
+    }
+  }
