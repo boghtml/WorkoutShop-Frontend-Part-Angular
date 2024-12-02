@@ -18,9 +18,6 @@
     <li><a href="#api-integration">API Integration</a></li>
     <li><a href="#order-management">Order Management</a></li>
     <li><a href="#cart-management">Cart Management</a></li>
-    <li><a href="#documentation-testing">Documentation and Testing</a></li>
-    <li><a href="#deployment">Deployment</a></li>
-    <li><a href="#error-handling">Error Handling and User Experience</a></li>
     <li><a href="#challenges-solutions">Challenges and Solutions</a></li>
     <li><a href="#conclusion">Results</a></li>
   </ol>
